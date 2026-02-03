@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg,#ff416c,#ff4b2b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  text-align: center;
+  color: white;
+  padding: 40px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yes {
+  background: #ff2f68;
+  color: white;
+}
+
+.no {
+  background: white;
+  color: #333;
+}
+
+.yes:hover {
+  transform: scale(1.1);
+}
+
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 1;
+  }
+}
+
+.result {
+  margin-top: 25px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>💌 Will You Be My Valentine</h1>
+  <h2>Kanishka?</h2>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function sayYes() {
+  document.getElementById("result").innerHTML =
+    "Yayyyy 😍💘 I knew it!!!";
+}
+
+function moveNo() {
+  const btn = document.querySelector(".no");
+  btn.style.position = "absolute";
+  btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+}
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 400);
+</script>
+
+</body>
+</html>
